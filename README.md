@@ -1,6 +1,8 @@
 # blockfinder
 Find bit isolated empty regions on OTP ROM images for reuse.
 
+![eyecandy](p1330159.jpg)
+
 ---------------------------
 
 ABOUT:
