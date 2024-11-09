@@ -12,41 +12,25 @@ This tool finds the largest blocks first, and then finds successively smaller bl
 
 example output:
 
+~~~~~~~~~
+ This program finds empty blocks on ROM images. 
+ Written by Rue Mohr 2024 
 
-> This program finds empty blocks on ROM images. 
+File image size is 15 bits
 
-> Written by Rue Mohr 2024 
-
->
-
->File image size is 15 bits
-
->
-
->2 kbits :
-
-> 0b1111110........ / 8  [starts 0x7E00  (32256)]
-
->1 kbits :
-
-> 0b11111110....... / 7  [starts 0x7F00  (32512)]
-
->64 bytes :
-
-> 0b111110111...... / 6  [starts 0x7DC0  (32192)]
-
-> 0b111111110...... / 6  [starts 0x7F80  (32640)]
-
->32 bytes :
-
-> 0b1111101101..... / 5  [starts 0x7DA0  (32160)]
-
->16 bytes :
-
-> 0b11111011001.... / 4  [starts 0x7D90  (32144)]
-
-> 0b11111111100.... / 4  [starts 0x7FC0  (32704)]
-
+2 kbits :
+ 0b1111110........ / 8  [starts 0x7E00  (32256)]
+1 kbits :
+ 0b11111110....... / 7  [starts 0x7F00  (32512)]
+64 bytes :
+ 0b111110111...... / 6  [starts 0x7DC0  (32192)]
+ 0b111111110...... / 6  [starts 0x7F80  (32640)]
+32 bytes :
+ 0b1111101101..... / 5  [starts 0x7DA0  (32160)]
+16 bytes :
+ 0b11111011001.... / 4  [starts 0x7D90  (32144)]
+ 0b11111111100.... / 4  [starts 0x7FC0  (32704)]
+~~~~~~~~~
 
 Here, it shows there is a 2kbit empty space (8 address lines) at 0x7E00 which will to go 0x7EFF (256 bytes)
 
