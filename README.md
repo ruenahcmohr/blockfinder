@@ -59,8 +59,14 @@ The intended use is as follows:
 
 1) read the ROM your targeting to a file
 2) run this program
+~~~~~~
+ ./blockfind sample256k.bin
+~~~~~~
 3) if there is not a block available with the space you need for your projet (were not all using this for 7 segment decoders, are we?) select another ROM and goto(1);
 4) use dd to write the image for your project over the blank area of the target ROM (this is why I gave you the start address in decimal)
+~~~~~~
+ TODO: figure out how to use dd for this and update README
+~~~~~~
 5) write the modified image back to the ROM
 6) install ROM in your project with the high address lines tied high or low according to the binary hint in the finder. (thats why I gave you the start address in binary, and constrained the binary to the number of address bits in your ROM)
 7) play.
