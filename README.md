@@ -67,7 +67,7 @@ The intended use is as follows:
 3) if there is not a block available with the space you need for your projet (were not all using this for 7 segment decoders, are we?) select another ROM and goto(1);
 4) use dd to write the image for your project over the blank area of the target ROM (this is why I gave you the start address in decimal)
 ~~~~~~
- TODO: figure out how to use dd for this and update README
+ dd if=project16bytes.bin of=modifyme.bin bs=1 seek=32144 conv=notrunc
 ~~~~~~
 5) write the modified image back to the ROM
 6) install ROM in your project with the high address lines tied high or low according to the binary hint in the finder. (thats why I gave you the start address in binary, and constrained the binary to the number of address bits in your ROM)
@@ -75,6 +75,41 @@ The intended use is as follows:
 
 If you always use the smallest region your project requires, you could probably get a few projects out of a ROM!
 
+----------------------------------------
+
+TRIAL RUN EXAMPLE TIDBITS:
+
+
+~~~~~~~~~~~~~~~~~~~~~
+cp sample256k.bin modifyme.bin
+
+./blockfind modifyme.bin
+
+
+16 bytes :
+ 0b11111011001.... / 4  [starts 0x7D90  (32144)]
+
+
+hd -v modifyme.bin |less
+
+00007d70  20 20 20 20 20 20 20 20  20 20 20 10 00 01 00 05  |           .....|
+00007d80  00 0a 0e ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
+00007d90  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
+00007da0  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
+00007db0  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
+
+echo -n HELLOTHEREWORLD! > project16bytes.bin
+
+dd if=project16bytes.bin of=modifyme.bin bs=1 seek=32144 conv=notrunc
+
+hd -v modifyme.bin |less
+
+00007d70  20 20 20 20 20 20 20 20  20 20 20 10 00 01 00 05  |           .....|
+00007d80  00 0a 0e ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
+00007d90  48 45 4c 4c 4f 54 48 45  52 45 57 4f 52 4c 44 21  |HELLOTHEREWORLD!|
+00007da0  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
+00007db0  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
+~~~~~~~~~~~~~~~~~~~~~
 
 Rue.
 
