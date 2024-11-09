@@ -1,11 +1,11 @@
 /*
-             CREATOR: DAn williams
-                DATE:
-         DESCRIPTION:
-            FILENAME:    .c
-             STARTED:
+             CREATOR: Rue Mohr
+                DATE: Nov 2024
+         DESCRIPTION: ROM block finder
+            FILENAME: main.c
+             STARTED: Nov 2024
     OPERATING SYSTEM: Linux
-1st VERSION FINISHED:
+1st VERSION FINISHED: Have I fixed all the errors yet?
 
 
 
