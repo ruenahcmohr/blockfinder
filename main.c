@@ -129,15 +129,17 @@ int main(int argc, char** argv) {
   if (fread(image, 1, imageSize, input) != imageSize) {
     fclose(input);
     free(image);
-    printf("error allocating memory for image\n");
+    printf("error reading image\n");
     exit(1);
   }
   fclose(input);  
   
-  printf("File image size is %d bits\n\n", highestBit(imageSize));
+  printf("File image address size is %d bits\n\n", highestBit(imageSize));
+  
+  RA = RunInit( makeMask(4) );  
   
   for (bs = 16; bs > 3; bs--) {
-    RA = RunInit( makeMask(bs) );   
+    RA->mask = makeMask(bs) ;
     sprintf(head, "%d %s :\n", (((1<<bs)*8)>=1024)?((1<<bs)*8)/(1024):(1<<bs) , (((1<<bs)*8)>=1024)?"kbits":"bytes"   );
 
 
